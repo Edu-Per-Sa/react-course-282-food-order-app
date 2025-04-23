@@ -2,20 +2,25 @@
 
         DO                  DOING                   DONE
 
-                            Cabecera
-                                Descripcion del negocio (Izquierda)
-                                    Imagen
-                                    Nombre
-                                Carrito de compra (Derecha)
-                                    Cantidad de elementos en el carrito (Haciendo click se abre el carrito)
+                                                    Cabecera
+                                                        Descripcion del negocio (Izquierda)
+                                                            Imagen
+                                                            Nombre
+                                                        Carrito de compra (Derecha)
+                                                            Cantidad de elementos en el carrito (Haciendo click se abre el carrito)
 
 
-Grilla de comida
-    Tarjeta (elementos en bloque - centrados)
-        Nombre
-        precio
-        Descripcion
-        Agregar al carrito
+                                                    Grilla de comida
+                                                        Tarjeta (elementos en bloque - centrados)
+                                                            Imagen
+                                                            Nombre
+                                                            precio
+                                                            Descripcion
+                                                            Boton agregar al carrito
+
+Grilla - Funcionalidad boton de agregar
+
+Cabecera Carrito - Reflejar las cantidades de elementos agregados
 
 
 Carrito de compra (Pop Up desplegable - elementos en bloque)
