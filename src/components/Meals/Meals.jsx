@@ -19,15 +19,7 @@ export default function Meals() {
   return (
     <main className={styles["meals-container"]}>
       {meals.length === 0 && <p> Esperando data...</p>}
-      {meals.length > 0 && meals.map(meal =>
-        <Meal
-          key={meal.id}
-          img={`http://localhost:3000/${meal.image}`}
-          name={meal.name}
-          price={meal.price}
-          description={meal.description}
-        />)
-      }
+      {meals.length > 0 && meals.map(meal => <Meal key={meal.id} meal={meal}/>)}
     </main>
   )
 
