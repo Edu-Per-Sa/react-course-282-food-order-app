@@ -18,10 +18,13 @@
                                                             Descripcion
                                                             Boton agregar al carrito
 
+
+                                                    Crear un componente para el BOTON.
+
+                            
 Grilla - Funcionalidad boton de agregar
 
 Cabecera Carrito - Reflejar las cantidades de elementos agregados
-
 
 Carrito de compra (Pop Up desplegable - elementos en bloque)
     Titulo
