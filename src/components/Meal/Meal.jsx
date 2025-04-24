@@ -1,3 +1,4 @@
+import Button from "../../UI/Button/Button";
 import styles from "./Meal.module.css";
 
 export default function Meal({ meal }) {
@@ -12,7 +13,7 @@ export default function Meal({ meal }) {
             <h3 className={styles["meal-name"]}> {meal.name} </h3>
             <p className={styles["meal-price"]}> {formattingPrice(meal.price)} </p>
             <p className={styles["meal-description"]}> {meal.description} </p>
-            <button className={styles["meal-button"]}> Add to cart </button>
+            <Button> Add to cart </Button>
         </div>
     )
 }
