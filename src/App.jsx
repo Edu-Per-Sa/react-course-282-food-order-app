@@ -1,13 +1,13 @@
 import Header from "./components/Header/Header";
-import Meal from "./components/Meal/Meal";
 import Meals from "./components/Meals/Meals";
+import CartContextProvider from "./store/cart-context.jsx";
 
 function App() {
   return (
-    <>
+    <CartContextProvider>
       <Header/>
       <Meals />
-    </>
+    </CartContextProvider>
   );
 }
 
