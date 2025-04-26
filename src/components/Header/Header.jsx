@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../../store/cart-context.jsx";
-
+import { formattingPrice } from "../../util/fotmattingPrice.js";
 import styles from "./Header.module.css";
 import logo from '../../assets/logo.jpg';
 
@@ -16,7 +16,10 @@ export default function Header() {
                 <h1> FOOD APP </h1>
             </div>
             <div>
-                CART ( {cart.items.length} )
+                <span>
+                    CART ( {cart.items.length} )
+                </span>
+                {cart.items.length > 0 && <span> - { formattingPrice(cart.totalPrice) }</span>}
             </div>
         </header>
     )

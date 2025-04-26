@@ -2,15 +2,13 @@ import { useContext } from "react";
 import Button from "../../UI/Button/Button";
 import styles from "./Meal.module.css";
 import { CartContext } from "../../store/cart-context.jsx";
+import { formattingPrice } from "../../util/fotmattingPrice.js";
 
 export default function Meal({ meal }) {
 
     const { addItem } = useContext(CartContext);
 
-    function formattingPrice (price) {
-        return Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(price);
-    };
-
+    
     function handleAddItem (meal) {
         addItem(meal);
     };
