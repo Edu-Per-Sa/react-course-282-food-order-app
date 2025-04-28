@@ -26,19 +26,19 @@ Grilla - Funcionalidad boton de agregar
 
 Cabecera Carrito - Reflejar las cantidades de elementos agregados
 
-Carrito de compra (Pop Up desplegable - elementos en bloque)
-    Titulo
-    Lista de comidas
-        Descripcion (Izquierda)
-            Titulo de la comida - Cantidad - Xprecio(izquieda)
-        Botones (Derecha - elementos en linea)
-            Sumar
-            Cantidad
-            Restar
-    Total
-    Botones de accion (Derecha - elementos en linea)
-        Cerrar
-        Ir a pagar
+                            Carrito de compra (Pop Up desplegable - elementos en bloque)
+                                Titulo
+                                Lista de comidas
+                                    Descripcion (Izquierda)
+                                        Titulo de la comida - Cantidad - Xprecio(izquieda)
+                                    Botones (Derecha - elementos en linea)
+                                        Sumar
+                                        Cantidad
+                                        Restar
+                                Total
+                                Botones de accion (Derecha - elementos en linea)
+                                    Cerrar
+                                    Ir a pagar
 
 Pagar (elementos en bloque)
     Titulo

@@ -1,0 +1,32 @@
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 600px;
+    max-width: 600px;
+    background-color: rgb(98, 98, 97);
+}
+
+.cart-container h3 {
+    margin: 0;
+    padding: 10px;
+}
+
+.cart-container ul {
+    margin: 0px;
+}
+
+.cart-container li {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: .5rem 2rem;
+}
+
+.cart-container p {
+    padding: 0 2rem;
+    align-self: flex-end;
+}
+
+.button-actions {
+    align-self: center;
+}

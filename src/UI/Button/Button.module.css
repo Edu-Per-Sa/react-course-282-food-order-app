@@ -9,3 +9,7 @@
 .button-container:hover {
     background-color: #ffc404;
 }
+
+.button-container:disabled{
+    background-color: grey;
+}
