@@ -8,7 +8,7 @@ async function sendHttp (url, config) {
         if (!response.ok) {
             throw new Error(`Error in response request. Response: ${resData}`);
         }
-        console.log("useHttp. Response OK --> ", resData);
+        
         return resData;
 };
 

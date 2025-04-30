@@ -79,8 +79,6 @@ export default function CartContextProvider({ children }) {
         removeItem,
     };
 
-    // console.log("cartItems --> ", cart.items, "total ->", cart.totalPrice);
-
     return (
         <CartContext.Provider value={cartContext}>
             {children}
