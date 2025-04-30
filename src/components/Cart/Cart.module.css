@@ -1,9 +1,11 @@
 .cart-container {
     display: flex;
     flex-direction: column;
-    min-width: 600px;
-    max-width: 600px;
-    background-color: rgb(98, 98, 97);
+    flex-wrap: nowrap;
+    width: 100%;
+    background-color: rgb(74, 74, 74);
+    padding: 1rem;
+    color: white;
 }
 
 .cart-container h3 {
@@ -12,15 +14,33 @@
 }
 
 .cart-container ul {
-    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: start;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .cart-container li {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    padding: .5rem 2rem;
+    margin: .5rem 0;
 }
+
+.cart-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.cart-item button {
+    border-radius: 25px;
+    width: 2rem;
+    height: 2rem;
+}
+
 
 .cart-container p {
     padding: 0 2rem;
@@ -28,5 +48,8 @@
 }
 
 .button-actions {
-    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 2rem;
 }
