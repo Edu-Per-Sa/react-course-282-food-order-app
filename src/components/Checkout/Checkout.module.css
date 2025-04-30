@@ -1,0 +1,29 @@
+
+.item-address {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: start;
+    flex-wrap: nowrap;
+}
+
+.item-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    margin: 1rem 0;
+}
+
+.item-actions button {
+    background-color: #ffc404;
+    padding: .5rem;
+    width: 6rem;
+    border-radius: .5rem;
+    font-weight: bolder;
+}
+
+.item-actions button:hover {
+    background-color: #cd9d00;
+}

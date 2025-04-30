@@ -3,11 +3,17 @@ import { CartContext } from "../../store/cart-context.jsx";
 import { formattingPrice } from "../../util/fotmattingPrice.js";
 import styles from "./Header.module.css";
 import logo from '../../assets/logo.jpg';
+import Button from "../../UI/Button/Button.jsx";
+import { ModalContext } from "../../store/modal-context.jsx";
 
 
 export default function Header() {
 
     const { cart } = useContext(CartContext);
+    const { showModal } = useContext(ModalContext);
+
+    
+    const totalItems = cart.items.length > 0  ? cart.items.reduce((totalItems, item) => {return totalItems + item.quantity}, 0) : 0;
 
     return (
         <header className={styles["header-container"]}>
@@ -16,10 +22,9 @@ export default function Header() {
                 <h1> FOOD APP </h1>
             </div>
             <div>
-                <span>
-                    CART ( {cart.items.length} )
-                </span>
-                {cart.items.length > 0 && <span> - { formattingPrice(cart.totalPrice) }</span>}
+                <Button onClick={() => showModal("cart")}>
+                    CART ( {totalItems} )
+                </Button>
             </div>
         </header>
     )

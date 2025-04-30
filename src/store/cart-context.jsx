@@ -5,7 +5,8 @@ export const CartContext = createContext({
         items: [],
         totalPrice: 0
     },
-    addItem: () => { },
+    addItem: () => {},
+    removeItem: () => {}
 })
 
 export default function CartContextProvider({ children }) {
@@ -21,7 +22,7 @@ export default function CartContextProvider({ children }) {
         setCart((prevCart) => {
             const newCartItems = [...prevCart.items];
 
-            const indexItem = newCartItems.findIndex((item) => item.id == meal.id);
+            const indexItem = newCartItems.findIndex((item) => item.id === meal.id);
 
             if (indexItem >= 0) {
 
@@ -42,7 +43,32 @@ export default function CartContextProvider({ children }) {
             }
 
             const totalPrice = fnTotalPrice(newCartItems);
+            return { items: [...newCartItems], totalPrice };
+        })
+    }
 
+    function removeItem (id) {
+        setCart((prevCart) => {
+
+            const newCartItems = [...prevCart.items];
+
+            const indexItem = newCartItems.findIndex((item) => item.id === id);
+            const quatityItem = newCartItems[indexItem].quantity;
+
+            if (quatityItem > 1) {
+
+                const updatedItem = {
+                    ...newCartItems[indexItem],
+                    quantity: newCartItems[indexItem].quantity - 1
+                };
+
+                newCartItems[indexItem] = updatedItem;
+
+            } else {
+                newCartItems.splice(indexItem, 1);
+            }
+
+            const totalPrice = fnTotalPrice(newCartItems);
             return { items: [...newCartItems], totalPrice };
         })
     }
@@ -50,9 +76,10 @@ export default function CartContextProvider({ children }) {
     const cartContext = {
         cart: cart,
         addItem,
+        removeItem,
     };
 
-    console.log("cartItems --> ", cart.items, "total ->", cart.totalPrice);
+    // console.log("cartItems --> ", cart.items, "total ->", cart.totalPrice);
 
     return (
         <CartContext.Provider value={cartContext}>
