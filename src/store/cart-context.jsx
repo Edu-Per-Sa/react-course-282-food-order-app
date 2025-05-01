@@ -2,21 +2,16 @@ import { createContext, useState } from "react";
 
 export const CartContext = createContext({
     cart: {
-        items: [],
-        totalPrice: 0
+        items: []
     },
     addItem: () => {},
-    removeItem: () => {}
+    removeItem: () => {},
+    clearCart: () => {}
 })
 
 export default function CartContextProvider({ children }) {
 
-    const [cart, setCart] = useState({ items: [], totalPrice: 0 });
-
-
-    function fnTotalPrice(items) {
-        return items.reduce((acumulator, item) => acumulator + item.price * item.quantity, 0);
-    }
+    const [cart, setCart] = useState({ items: [] });
 
     function addItem(meal) {
         setCart((prevCart) => {
@@ -42,8 +37,7 @@ export default function CartContextProvider({ children }) {
                 })
             }
 
-            const totalPrice = fnTotalPrice(newCartItems);
-            return { items: [...newCartItems], totalPrice };
+            return { items: [...newCartItems] };
         })
     }
 
@@ -68,15 +62,19 @@ export default function CartContextProvider({ children }) {
                 newCartItems.splice(indexItem, 1);
             }
 
-            const totalPrice = fnTotalPrice(newCartItems);
-            return { items: [...newCartItems], totalPrice };
+            return { items: [...newCartItems] };
         })
+    }
+
+    function clearCart () {
+        setCart({ items: [] });
     }
 
     const cartContext = {
         cart: cart,
         addItem,
         removeItem,
+        clearCart,
     };
 
     return (

@@ -6,7 +6,7 @@ async function sendHttp (url, config) {
         const response = await fetch(url ,config);
         const resData = await response.json();
         if (!response.ok) {
-            throw new Error(`Error in response request. Response: ${resData}`);
+            throw new Error(`Request response error --> ${resData.message}`);
         }
         
         return resData;
@@ -25,7 +25,7 @@ export default function useHttp(initialData) {
             const resData = await sendHttp(url, config);
             setData(resData);
         } catch (error) {
-            setError(`Error in Catch ---> ${error}`);
+            setError(error.message);
         }
         setIsFetching(false);
     }

@@ -7,11 +7,13 @@ import { CartContext } from "../../store/cart-context.jsx";
 import Modal from "../../UI/Modal/Modal.jsx";
 import Input from "../../UI/Input/Input.jsx";
 import useHttp from "../../hooks/Http/useHttp.js";
+import ErrorInfo from "../ErrorInfo/ErrorInfo.jsx";
+import Button from "../../UI/Button/Button.jsx"
 
 export default function Checkout() {
 
     const { modalText, closeModal } = useContext(ModalContext);
-    const { cart } = useContext(CartContext);
+    const { cart, clearCart } = useContext(CartContext);
 
     const formRef = useRef();
 
@@ -37,26 +39,53 @@ export default function Checkout() {
                 })
             }
         );
+    }
+
+
+    let actionsInfo = <>
+        <button onClick={() => closeModal()} type="button">CLOSE</button>
+        <button type="submit"> ORDER </button>
+    </>
+    if (isFetching) {
+        actionsInfo = <p> Sending order...</p>
+    }
+
+    let errorInfo = ""
+    if (error) {
+        errorInfo = <ErrorInfo title={"Error sending order"} message={error.message} />
+    }
+
+    let infoModal = <form ref={formRef} onSubmit={handleOrder}>
+        <Input label={"Name"} id={"name"} name={"name"} />
+        <Input type="email" label="E-Mail" id="email" name="email" />
+        <Input label="Street" id="street" name="street" />
+        <div className={styles["item-address"]}>
+            <Input type="text" label={"City"} id={"city"} name={"city"} />
+            <Input type="number" label={"Postal Code"} id={"postal-code"} name={"postal-code"} />
+        </div>
+        {errorInfo}
+        <div className={styles["item-actions"]}>
+            {actionsInfo}
+        </div>
+    </form>
+
+    if (!error && respData.message) {
 
         formRef.current.reset();
+        
+        clearCart();
+
+        infoModal = <>
+            <h2> Successful... </h2>
+            <p> {respData.message}</p>
+            <Button onClick={closeModal}> Ok </Button>
+        </>
     }
 
     return (
         createPortal(
             <Modal openModal={modalText === "checkout"} onClose={modalText === "checkout" ? closeModal : null}>
-                <form ref={formRef} onSubmit={handleOrder}>
-                    <Input label={"Name"} id={"name"} name={"name"} />
-                    <Input type="email" label="E-Mail" id="email" name="email" />
-                    <Input label="Street" id="street" name="street" />
-                    <div className={styles["item-address"]}>
-                        <Input type="text" label={"City"} id={"city"} name={"city"} />
-                        <Input type="number" label={"Postal Code"} id={"postal-code"} name={"postal-code"} />
-                    </div>
-                    <div className={styles["item-actions"]}>
-                        <button disabled={isFetching} onClick={() => closeModal()} type="button">CLOSE</button>
-                        <button disabled={isFetching} type="submit"> ORDER </button>
-                    </div>
-                </form>
+                {infoModal}
             </Modal>,
             document.getElementById("modal"))
     )

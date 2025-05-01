@@ -24,7 +24,7 @@ app.post('/orders', async (req, res) => {
   const orderData = req.body.order;
 
   if (orderData === null || orderData.items === null || orderData.items.length === 0) {
-    console.log("DESPUES DE ITEMS---");
+    
     return res
       .status(400)
       .json({ message: 'Missing data.' });
@@ -42,7 +42,7 @@ app.post('/orders', async (req, res) => {
       orderData.customer.city === null ||
       orderData.customer.city.trim() === ''
     ) {
-      console.log("DESPUES DE VALORES---");
+
       return res.status(400).json({
         message:
         'Missing data: Email, name, street, postal code or city is missing.',
@@ -65,7 +65,7 @@ app.use((req, res) => {
     return res.sendStatus(200);
   }
 
-  res.status(404).json({ message: 'Not found' });
+  res.status(404).json({ message: `Not found --> ${req.url}` });
 });
 
 app.listen(3000);
