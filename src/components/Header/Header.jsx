@@ -22,7 +22,7 @@ export default function Header() {
                 <h1> FOOD APP </h1>
             </div>
             <div>
-                <Button onClick={() => showModal("cart")}>
+                <Button onlyText onClick={() => showModal("cart")}>
                     CART ( {totalItems} )
                 </Button>
             </div>

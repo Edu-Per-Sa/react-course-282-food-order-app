@@ -29,10 +29,10 @@ export default function Cart() {
         cartInfo = <ul className={styles["cart-item-container"]}>
             {items.map((item) =>
                 <li className={styles["cart-item"]} key={item.id}>
-                    <p>
+                    <p className={styles["cart-item-info"]}>
                         {item.name} - {item.quantity} x {formattingPrice(item.price)}
                     </p>
-                    <span>
+                    <span className={styles["cart-item-actions"]}>
                         <button onClick={() => addItem(item)}> + </button>
                         <span> {item.quantity} </span>
                         <button onClick={() => removeItem(item.id)}> - </button>
@@ -47,11 +47,12 @@ export default function Cart() {
             <div className={styles["cart-container"]}>
                 <h3> YOUR CART </h3>
                 {cartInfo}
-                <p>
-                    TOTAL {formattingPrice(totalPrice)}
+                <p className={styles["cart-price"]}>
+                    <span> TOTAL </span>
+                    <span> {formattingPrice(totalPrice)} </span>
                 </p>
-                <div className={styles["button-actions"]}>
-                    <Button onClick={() => closeModal()}> CLOSE </Button>
+                <div className={styles["cart-button-actions"]}>
+                    <Button onlyText onClick={() => closeModal()}> CLOSE </Button>
                     {items.length > 0 ? <Button onClick={() => showModal("checkout")}> Go to checkout </Button> : null}
                 </div>
             </div>

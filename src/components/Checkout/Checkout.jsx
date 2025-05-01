@@ -52,8 +52,8 @@ export default function Checkout() {
     }
 
     let actionsInfo = <>
-        <button onClick={() => closeModal()} type="button">CLOSE</button>
-        <button type="submit"> ORDER </button>
+        <Button onlyText onClick={() => closeModal()}> CLOSE </Button>
+        <Button type="submit"> ORDER </Button>
     </>
     if (isFetching) {
         actionsInfo = <p> Sending order...</p>
@@ -64,7 +64,7 @@ export default function Checkout() {
         errorInfo = <ErrorInfo title={"Error sending order"} message={error.message} />
     }
 
-    let infoModal = <form ref={formRef} onSubmit={handleOrder}>
+    let infoModal = <form className={styles["form-container"]} ref={formRef} onSubmit={handleOrder}>
         <Input label={"Name"} id={"name"} name={"name"} />
         <Input type="email" label="E-Mail" id="email" name="email" />
         <Input label="Street" id="street" name="street" />
@@ -79,11 +79,11 @@ export default function Checkout() {
     </form>
 
     if (!error && respData.message) {
-        infoModal = <>
+        infoModal = <div className={styles["form-container"]}>
             <h2> Successful... </h2>
             <p> {respData.message}</p>
-            <Button onClick={handleOkOrder}> Ok </Button>
-        </>
+            <Button className={styles["ok-seccessful"]} onClick={handleOkOrder}> Ok </Button>
+        </div>
     }
 
     return (

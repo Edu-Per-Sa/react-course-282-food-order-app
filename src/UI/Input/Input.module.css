@@ -10,4 +10,5 @@
 .input-container input {
     width: 100%;
     padding: .5rem;
+    border-radius: .5rem;
 }
