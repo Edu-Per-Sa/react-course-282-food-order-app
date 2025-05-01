@@ -1,13 +1,25 @@
 .button-container {
-    background-color: #cd9d00;
+    background-color:#ffc404;
     color: black;
     font-size: larger;
     padding: .5rem 1rem;
     border-radius: 10px;
+    white-space: nowrap;
+}
+
+.onlyText {
+    background-color:#ffc40400;
+    color: #ffc404;
+    border: none;
+    font-size: larger;
+}
+
+.onlyText:hover {
+    color: #ffea00;
 }
 
 .button-container:hover {
-    background-color: #ffc404;
+    background-color:  #ffea00;
 }
 
 .button-container:disabled{

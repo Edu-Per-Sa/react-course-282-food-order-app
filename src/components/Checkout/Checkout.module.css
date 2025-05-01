@@ -1,3 +1,22 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    background-color: rgb(54, 54, 54);
+    padding: 1rem;
+    color: white;
+}
+
+.form-container p {
+    text-align: center;
+}
+
+.ok-seccessful{
+    margin-top: 2rem;
+    align-self: center;
+    width: 20%;
+}
 
 .item-address {
     display: flex;
@@ -11,19 +30,7 @@
     display: flex;
     flex-direction: row;
     gap: 2rem;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     flex-wrap: nowrap;
     margin: 1rem 0;
-}
-
-.item-actions button {
-    background-color: #ffc404;
-    padding: .5rem;
-    width: 6rem;
-    border-radius: .5rem;
-    font-weight: bolder;
-}
-
-.item-actions button:hover {
-    background-color: #cd9d00;
 }
