@@ -1,40 +1,33 @@
 import { createContext, useState } from "react";
 
 export const CartContext = createContext({
-    cart: {
-        items: [],
-        totalPrice: 0
-    },
+    items: [],
     addItem: () => {},
-    removeItem: () => {}
+    removeItem: () => {},
+    clearCart: () => {}
 })
 
 export default function CartContextProvider({ children }) {
 
-    const [cart, setCart] = useState({ items: [], totalPrice: 0 });
-
-
-    function fnTotalPrice(items) {
-        return items.reduce((acumulator, item) => acumulator + item.price * item.quantity, 0);
-    }
+    const [items, setItems] = useState([]);
 
     function addItem(meal) {
-        setCart((prevCart) => {
-            const newCartItems = [...prevCart.items];
+        setItems((prevItems) => {
+            const newItems = [...prevItems];
 
-            const indexItem = newCartItems.findIndex((item) => item.id === meal.id);
+            const indexItem = newItems.findIndex((item) => item.id === meal.id);
 
             if (indexItem >= 0) {
 
                 const updatedItem = {
-                    ...newCartItems[indexItem],
-                    quantity: newCartItems[indexItem].quantity + 1
+                    ...newItems[indexItem],
+                    quantity: newItems[indexItem].quantity + 1
                 };
 
-                newCartItems[indexItem] = updatedItem;
+                newItems[indexItem] = updatedItem;
 
             } else {
-                newCartItems.unshift({
+                newItems.unshift({
                     id: meal.id,
                     name: meal.name,
                     quantity: 1,
@@ -42,41 +35,44 @@ export default function CartContextProvider({ children }) {
                 })
             }
 
-            const totalPrice = fnTotalPrice(newCartItems);
-            return { items: [...newCartItems], totalPrice };
+            return [...newItems];
         })
     }
 
     function removeItem (id) {
-        setCart((prevCart) => {
+        setItems((prevItems) => {
 
-            const newCartItems = [...prevCart.items];
+            const newItems = [...prevItems];
 
-            const indexItem = newCartItems.findIndex((item) => item.id === id);
-            const quatityItem = newCartItems[indexItem].quantity;
+            const indexItem = newItems.findIndex((item) => item.id === id);
+            const quatityItem = newItems[indexItem].quantity;
 
             if (quatityItem > 1) {
 
                 const updatedItem = {
-                    ...newCartItems[indexItem],
-                    quantity: newCartItems[indexItem].quantity - 1
+                    ...newItems[indexItem],
+                    quantity: newItems[indexItem].quantity - 1
                 };
 
-                newCartItems[indexItem] = updatedItem;
+                newItems[indexItem] = updatedItem;
 
             } else {
-                newCartItems.splice(indexItem, 1);
+                newItems.splice(indexItem, 1);
             }
 
-            const totalPrice = fnTotalPrice(newCartItems);
-            return { items: [...newCartItems], totalPrice };
+            return [...newItems];
         })
     }
 
+    function clearCart () {
+        setItems([]);
+    }
+
     const cartContext = {
-        cart: cart,
+        items,
         addItem,
         removeItem,
+        clearCart,
     };
 
     return (

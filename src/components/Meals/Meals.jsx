@@ -3,10 +3,10 @@ import styles from "./Meals.module.css";
 
 import Meal from "../Meal/Meal";
 import useHttp from "../../hooks/Http/useHttp";
+import ErrorInfo from "../ErrorInfo/ErrorInfo.jsx";
 
 export default function Meals() {
 
-  // const [meals, setMeals] = useState([]);
   const { isFetching, data: meals, sendRequest, error } = useHttp([]);
 
   useEffect(() => {
@@ -14,15 +14,14 @@ export default function Meals() {
   }, [])
 
 
-  let mealsInfo = <p> Valor por defecto mientras busca menus... </p>
+  let mealsInfo = <p> Esperando la busqueda de los menus... </p>
 
   if (isFetching) {
     mealsInfo = <p> Buscando los menus en la base de datos... </p>
   }
 
   if (error) {
-    console.log("Error--> ", error);
-    mealsInfo = <p> ERROR al buscar los menus... {error} </p>
+    mealsInfo = <ErrorInfo title={"Error fetching menus..."} message={error}/>
   }
 
   if (!error && !isFetching && meals.length > 0) {

@@ -22,38 +22,49 @@
                                                     Crear un componente para el BOTON.
 
                             
-Grilla - Funcionalidad boton de agregar
+                                                    Grilla - Funcionalidad boton de agregar
 
-Cabecera Carrito - Reflejar las cantidades de elementos agregados
+                                                    Cabecera Carrito - Reflejar las cantidades de elementos agregados
 
-                            Carrito de compra (Pop Up desplegable - elementos en bloque)
-                                Titulo
-                                Lista de comidas
-                                    Descripcion (Izquierda)
-                                        Titulo de la comida - Cantidad - Xprecio(izquieda)
-                                    Botones (Derecha - elementos en linea)
-                                        Sumar
-                                        Cantidad
-                                        Restar
-                                Total
-                                Botones de accion (Derecha - elementos en linea)
-                                    Cerrar
-                                    Ir a pagar
+                                                    Carrito de compra (Pop Up desplegable - elementos en bloque)
+                                                        Titulo
+                                                        Lista de comidas
+                                                            Descripcion (Izquierda)
+                                                                Titulo de la comida - Cantidad - Xprecio(izquieda)
+                                                            Botones (Derecha - elementos en linea)
+                                                                Sumar
+                                                                Cantidad
+                                                                Restar
+                                                        Total
+                                                        Botones de accion (Derecha - elementos en linea)
+                                                            Cerrar
+                                                            Ir a pagar
 
-Pagar (elementos en bloque)
-    Titulo
-    Monto total
-    Nombre completo
-    Correo electronico
-    Direccion
-    Ubicacion
-        Codigo postal
-        Ciudad
-    Botones de accion
-        Cerrar
-        Submit orden
+                                                            Pagar (elementos en bloque)
+                                                                Titulo
+                                                                Monto total
+                                                                Nombre completo
+                                                                Correo electronico
+                                                                Direccion
+                                                                Ubicacion
+                                                                    Codigo postal
+                                                                    Ciudad
+                                                                Botones de accion
+                                                                    Cerrar
+                                                                    Submit orden
 
-Aviso de pago exitoso
-    Titulo
-    Textos
-    Boton de OK y Cerrar
+                                                    Aviso de Orden exitosa
+                                                        Titulo
+                                                        Textos
+                                                        Boton de OK y Cerrar
+
+
+Final Css
+
+Info App
+
+Conectar con un servidor (Firebase o similar)
+
+Publicar en portafolio y probar
+        
+

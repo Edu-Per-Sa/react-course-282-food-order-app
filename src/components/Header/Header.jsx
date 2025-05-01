@@ -9,11 +9,11 @@ import { ModalContext } from "../../store/modal-context.jsx";
 
 export default function Header() {
 
-    const { cart } = useContext(CartContext);
+    const { items } = useContext(CartContext);
     const { showModal } = useContext(ModalContext);
 
     
-    const totalItems = cart.items.length > 0  ? cart.items.reduce((totalItems, item) => {return totalItems + item.quantity}, 0) : 0;
+    const totalItems = items.length > 0  ? items.reduce((totalItems, item) => {return totalItems + item.quantity}, 0) : 0;
 
     return (
         <header className={styles["header-container"]}>
