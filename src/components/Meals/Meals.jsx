@@ -14,7 +14,7 @@ export default function Meals() {
   }, [])
 
 
-  let mealsInfo = <p> Valor por defecto mientras busca menus... </p>
+  let mealsInfo = <p> Esperando la busqueda de los menus... </p>
 
   if (isFetching) {
     mealsInfo = <p> Buscando los menus en la base de datos... </p>

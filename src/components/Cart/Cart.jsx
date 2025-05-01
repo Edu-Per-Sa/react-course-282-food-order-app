@@ -14,20 +14,20 @@ function fnTotalPrice(items) {
 
 export default function Cart() {
 
-    const { cart, addItem, removeItem } = useContext(CartContext);
+    const { items, addItem, removeItem } = useContext(CartContext);
     const { modalText, closeModal, showModal } = useContext(ModalContext);
 
 
-    const totalPrice = fnTotalPrice(cart.items);
+    const totalPrice = fnTotalPrice(items);
 
     let cartInfo = <EmptyInfo>
         <p> Ther is no elements in the cart. </p>
         <p> Please select at least one in the menu... </p>
     </EmptyInfo>
 
-    if (cart.items.length > 0) {
+    if (items.length > 0) {
         cartInfo = <ul className={styles["cart-item-container"]}>
-            {cart.items.map((item) =>
+            {items.map((item) =>
                 <li className={styles["cart-item"]} key={item.id}>
                     <p>
                         {item.name} - {item.quantity} x {formattingPrice(item.price)}
@@ -52,7 +52,7 @@ export default function Cart() {
                 </p>
                 <div className={styles["button-actions"]}>
                     <Button onClick={() => closeModal()}> CLOSE </Button>
-                    {cart.items.length > 0 ? <Button onClick={() => showModal("checkout")}> Go to checkout </Button> : null}
+                    {items.length > 0 ? <Button onClick={() => showModal("checkout")}> Go to checkout </Button> : null}
                 </div>
             </div>
         </Modal>

@@ -12,19 +12,19 @@ import Button from "../../UI/Button/Button.jsx"
 
 export default function Checkout() {
 
-    const { modalText, closeModal } = useContext(ModalContext);
-    const { cart, clearCart } = useContext(CartContext);
+    const { modalText, closeModal, showModal } = useContext(ModalContext);
+    const { items, clearCart } = useContext(CartContext);
 
     const formRef = useRef();
 
-    const { sendRequest, error, data: respData, isFetching } = useHttp([]);
+    const { sendRequest, error, data: respData, isFetching, clearDataRespopnse } = useHttp([]);
 
     async function handleOrder(event) {
         event.preventDefault();
         const formDataObj = new FormData(event.target);
         const data = Object.fromEntries(formDataObj.entries());
 
-        await sendRequest(
+        const resData = await sendRequest(
             "http://localhost:3000/orders",
             {
                 method: "POST",
@@ -33,14 +33,23 @@ export default function Checkout() {
                 },
                 body: JSON.stringify({
                     order: {
-                        items: cart.items,
+                        items,
                         customer: { ...data }
                     }
                 })
             }
         );
+
+        if (resData) {
+            formRef.current.reset();
+        }
     }
 
+    function handleOkOrder () {
+        clearDataRespopnse();
+        closeModal();
+        clearCart();
+    }
 
     let actionsInfo = <>
         <button onClick={() => closeModal()} type="button">CLOSE</button>
@@ -70,15 +79,10 @@ export default function Checkout() {
     </form>
 
     if (!error && respData.message) {
-
-        formRef.current.reset();
-        
-        clearCart();
-
         infoModal = <>
             <h2> Successful... </h2>
             <p> {respData.message}</p>
-            <Button onClick={closeModal}> Ok </Button>
+            <Button onClick={handleOkOrder}> Ok </Button>
         </>
     }
 
